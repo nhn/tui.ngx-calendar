@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('fm-calendar-dev App', () => {
+describe('ngx-tui-dev App', () => {
   let page: AppPage;
 
   beforeEach(() => {

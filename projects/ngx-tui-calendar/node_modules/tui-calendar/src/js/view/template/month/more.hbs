@@ -1,0 +1,45 @@
+<div class="{{CSS_PREFIX}}month-more" style="width:100%">
+    <div class="{{CSS_PREFIX}}month-more-title">
+        <span class="{{CSS_PREFIX}}month-more-title-date">{{{monthMoreTitleDate-tmpl date}}}</span>
+        <button type="button" class="{{CSS_PREFIX}}month-more-close">{{{monthMoreClose-tmpl}}}</button>
+    </div>
+    <div class="{{CSS_PREFIX}}month-more-list">
+        {{#each schedules}}
+        {{#fi model.isAllDay '||' hasMultiDates ~}}
+        <div data-id="{{stamp model}}"
+             data-schedule-id="{{model.id}}" data-calendar-id="{{model.calendarId}}"
+             class="{{CSS_PREFIX}}month-more-schedule {{CSS_PREFIX}}month-more-allday {{CSS_PREFIX}}weekday-schedule-title"
+             style="height: {{@root.scheduleHeight}}px; line-height: {{@root.scheduleHeight}}px; margin-top: {{@root.scheduleGutter}}px; border-radius: {{@root.borderRadius}};
+                {{#if model.isFocused}}
+                    color: #ffffff; background-color:{{model.color}}; border-left:3px solid {{model.borderColor}};
+                {{else}}
+                    color:{{model.color}}; background-color:{{model.bgColor}};  border-left:3px solid {{model.borderColor}}
+                {{/if}}
+                
+                {{model.customStyle}}">
+                {{{allday-tmpl model}}}
+        </div>
+        {{else}}
+        <div data-id="{{stamp model}}"
+             data-schedule-id="{{model.id}}" data-calendar-id="{{model.calendarId}}"
+             class="{{CSS_PREFIX}}month-more-schedule {{CSS_PREFIX}}weekday-schedule {{CSS_PREFIX}}weekday-schedule-time"
+             style="height: {{@root.scheduleHeight}}px; line-height: {{@root.scheduleHeight}}px; margin-top: {{@root.scheduleGutter}}px;{{model.customStyle}}">
+            <span class="{{CSS_PREFIX}}weekday-schedule-bullet"
+                style="top: {{@root.scheduleBulletTop}}px;
+                    {{#if model.isFocused}}
+                        background: #ffffff
+                    {{else}}
+                        background:{{model.borderColor}}
+                    {{/if}}"></span>
+            <span class="{{CSS_PREFIX}}weekday-schedule-title"
+                style="{{#if model.isFocused}}
+                        color: #ffffff;
+                        background-color: {{model.color}}
+                    {{else}}
+                        color:#333;
+                    {{/if}}">{{{time-tmpl model}}}</span>
+        </div>
+        {{/fi}}
+        {{/each}}
+    </div>
+</div>
