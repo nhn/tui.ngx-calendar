@@ -13,7 +13,8 @@ export function defaultsFactory(userDefaults: TuiCalendarOptions): TuiCalendarOp
 }
 @NgModule({
   declarations: [NgxTuiCalendarComponent],
-  exports: [NgxTuiCalendarComponent]
+  exports: [NgxTuiCalendarComponent],
+  providers: [{provide: TuiCalendarDefaults, useClass: TuiCalendarDefaults}]
 })
 export class NgxTuiCalendarModule { 
 

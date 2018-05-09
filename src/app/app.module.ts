@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { NgxTuiCalendarModule } from '../../projects/ngx-tui-calendar/src/lib';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgxTuiCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
