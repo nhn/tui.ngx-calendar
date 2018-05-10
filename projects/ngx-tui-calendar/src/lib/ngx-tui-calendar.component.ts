@@ -8,7 +8,7 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import { Calendar } from 'tui-calendar';
+import * as Calendar from 'tui-calendar';
 import { TuiCalendarOptions, TuiCalendarDefaults } from './ngx-tui-calendar-defaults.service'
 
 @Component({
