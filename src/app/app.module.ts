@@ -7,14 +7,14 @@ import { NgxTuiCalendarModule } from '../../projects/ngx-tui-calendar/src/lib';
 
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    NgxTuiCalendarModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent
+	],
+	imports: [
+		BrowserModule,
+		NgxTuiCalendarModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
