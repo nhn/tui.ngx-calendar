@@ -1,5 +1,5 @@
 import { NgModule, InjectionToken, ModuleWithProviders } from '@angular/core';
-import { NgxTuiCalendarComponent } from './ngx-tui-calendar.component';
+import { NgxTuiCalendarDirective } from './ngx-tui-calendar.directive';
 import { TuiCalendarOptions, TuiCalendarDefaults } from './ngx-tui-calendar-defaults.service';
 
 export const USER_DEFAULTS: InjectionToken<string> = new InjectionToken(
@@ -12,8 +12,8 @@ export function defaultsFactory(userDefaults: TuiCalendarOptions): TuiCalendarOp
 	return defaults;
 }
 @NgModule({
-	declarations: [NgxTuiCalendarComponent],
-	exports: [NgxTuiCalendarComponent],
+	declarations: [NgxTuiCalendarDirective],
+	exports: [NgxTuiCalendarDirective],
 	providers: [{ provide: TuiCalendarDefaults, useClass: TuiCalendarDefaults }]
 })
 export class NgxTuiCalendarModule {

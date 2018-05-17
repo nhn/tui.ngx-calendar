@@ -1,1 +1,3 @@
-<lib-ngx-tui-calendar #calendar (datePicked)="onDate($event)" (timePicked)="onTime($event)" (schedulerPicked)="onSchedule($event)"></lib-ngx-tui-calendar>
+<input type="date" name="date" id="date"  (change)="onDateChange($event)">
+
+<ngx-tui-calendar #calendar [defaultView]="defaultView" (dayNameClicked)="onDate($event)" (timeClicked)="onTime($event)" (scheduleClicked)="onSchedule($event)"></ngx-tui-calendar>
