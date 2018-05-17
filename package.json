@@ -12,10 +12,10 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "6.0.0",
-    "@angular/core": "6.0.0",
-    "@angular/compiler": "6.0.0",
     "@angular/animations": "6.0.0",
+    "@angular/common": "6.0.0",
+    "@angular/compiler": "6.0.0",
+    "@angular/core": "6.0.0",
     "@angular/forms": "6.0.0",
     "@angular/http": "6.0.0",
     "@angular/platform-browser": "6.0.0",
@@ -23,6 +23,7 @@
     "@angular/router": "6.0.0",
     "core-js": "^2.4.1",
     "rxjs": "^6.1.0",
+    "tui-calendar": "^1.2.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
