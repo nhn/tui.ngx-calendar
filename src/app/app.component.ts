@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NgxTuiCalendarDirective } from '../../projects/ngx-tui-calendar/src/lib';
+import { NgxTuiCalendarComponent } from '../../projects/ngx-tui-calendar/src/lib';
 
 @Component({
 	selector: 'app-root',
@@ -9,28 +9,24 @@ import { NgxTuiCalendarDirective } from '../../projects/ngx-tui-calendar/src/lib
 export class AppComponent {
 	title = 'app';
 
-	@ViewChild('calendar') calendar: NgxTuiCalendarDirective;
+	@ViewChild('calendar') calendar: NgxTuiCalendarComponent;
 
 	constructor() {
-		//this.calendar.createSchedule();
 	}
 
 	onDate(date) {
-		console.error(date);
+		//console.log(date);
 	}
 
 	onTime(dateTime) {
-		console.error(dateTime);
+		//console.log(dateTime);
 	}
 
 	onSchedule(schedule) {
-		console.error(schedule);
+		//console.log(schedule);
 	}
 
 	onDateChange($event) {
-		console.log(this.calendar);
-		
 		this.calendar.setDate(new Date($event.target.value));
-		//console.log($event.target.value);
 	}
 }
