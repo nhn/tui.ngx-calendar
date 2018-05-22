@@ -10,10 +10,10 @@ The information below is for whoever wants to try it in the meantime.
 npm install ngx-tui-calendar --save
 
 #### Stylesheets
-Add the Tui.Calendar stylesheet (eg. '../node_modules/tui-calendar/style.css')  to **one** of these:
+Add the Tui.Calendar stylesheet to **one** of these:
 
-- Angular CLI configuration json file; 
-- global 'styles' stylesheet of your project, or 
+- Angular CLI configuration json file, **or** 
+- global 'styles' stylesheet of your project (eg. '@import '../node_modules/tui-calendar/dist/tui-calendar.min.css';), **or**
 - import as a style tag in index.html (this option will most likely require that the file be hosted somewhere)
 
 ### Usage
