@@ -1,27 +1,81 @@
-# NgxTuiDev
+## Important note
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
+This project is [due to be handed over](https://github.com/nhnent/tui.calendar/issues/82) to the Toast UI folks.
 
-## Development server
+The information below is for whoever wants to try it in the meantime.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Installation
 
-## Code scaffolding
+#### Package
+npm install ngx-tui-calendar --save
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Stylesheets
+Add the Tui.Calendar stylesheet (eg. '../node_modules/tui-calendar/style.css')  to **one** of these:
 
-## Build
+- Angular CLI configuration json file; 
+- global 'styles' stylesheet of your project, or 
+- import as a style tag in index.html (this option will most likely require that the file be hosted somewhere)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+### Usage
 
-## Running unit tests
+#### In app module:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+~~~
+...
+import { NgxTuiCalendarModule } from 'ngx-tui-calendar';
+...
 
-## Running end-to-end tests
+@NgModule({
+  ...
+	imports: [
+    ...
+		NgxTuiCalendarModule.forRoot(),
+    ...
+  ]
+  ...
+})
+~~~
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+#### in component.ts:
+~~~
+import { Component, ViewChild, ... } from '@angular/core';
+...
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+export class CalendarComponent implements OnInit {
+  ...
+	@ViewChild('exampleCalendar') exampleCalendar: NgxTuiCalendarComponent;
+  ...
+
+  	onTuiCalendarCreate($event) {
+      /* at this point the calendar has been created and it's methods are available via the ViewChild defined above, so for example you can do */
+      this.exampleCalendar.createSchedules([/* populated schedules array*/]);
+	  }
+}
+~~~
+
+#### in component.html:
+~~~
+...
+      <ngx-tui-calendar #exampleCalendar id="example-calendar" (tuiCalendarCreated)="onTuiCalendarCreate($event)"></ngx-tui-calendar>
+...
+~~~
+
+
+
+#### Note on container dimensions
+
+The container for your calendar must have explicit width and height. For example, if giving an id of "#calendar-view":
+
+~~~
+      <ngx-tui-calendar #calendarView id="example-calendar"></ngx-tui-calendar>
+~~~
+
+~~~
+    #example-calendar {
+        ...
+        width: 100%;
+        height: 100vh;
+        ...
+    }
+~~~
