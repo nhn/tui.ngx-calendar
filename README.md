@@ -40,6 +40,7 @@ import { NgxTuiCalendarModule } from 'ngx-tui-calendar';
 #### in component.ts:
 ~~~
 import { Component, ViewChild, ... } from '@angular/core';
+import { NgxTuiCalendarComponent } from 'ngx-tui-calendar';
 ...
 
 export class CalendarComponent implements OnInit {
