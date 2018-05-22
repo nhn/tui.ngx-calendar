@@ -65,7 +65,7 @@ export class CalendarComponent implements OnInit {
 
 #### Note on container dimensions
 
-The container for your calendar must have explicit width and height. For example, if giving an id of "#calendar-view":
+The container for your calendar must have explicit width and height. For example, if giving an id of "#example-calendar":
 
 ~~~
       <ngx-tui-calendar #calendarView id="example-calendar"></ngx-tui-calendar>
