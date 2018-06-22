@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgxTuiCalendarComponent } from '../../projects/ngx-tui-calendar/src/lib';
+import { ClickDaynameEvent, BeforeCreateScheduleEvent } from '../../projects/ngx-tui-calendar/src/lib/Models/Events';
 
 @Component({
 	selector: 'app-root',
@@ -36,13 +37,17 @@ export class AppComponent {
 		]);
 	}
 
-	onDate(date) {
-		console.log('onDate', date);
-	}
+  onBeforeCreateSchedule(event: BeforeCreateScheduleEvent) {
+    console.log('beforeCreateScheduleEvent', event);
+  }
 
-	onTime(dateTime) {
-		console.log('dateTime', dateTime);
-	}
+  onDate(date) {
+    console.log('onDate', date);
+  }
+
+  onTime(dateTime) {
+    console.log('dateTime', dateTime);
+  }
 
 	onSchedule(schedule) {
 		console.log('schedule', schedule);
