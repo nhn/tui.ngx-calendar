@@ -13,5 +13,11 @@
   </select>
 
 
-<ngx-tui-calendar #calendar (tuiCalendarCreated)="onTuiCalendarCreated($event)" [defaultView]="defaultView" (dayNameClicked)="onDate($event)"
-    (timeClicked)="onTime($event)" (scheduleClicked)="onSchedule($event)"></ngx-tui-calendar>
+<ngx-tui-calendar #calendar
+                  (tuiCalendarCreated)="onTuiCalendarCreated($event)"
+                  [defaultView]="defaultView"
+                  (dayNameClicked)="onDate($event)"
+                  (timeClicked)="onTime($event)"
+                  (scheduleClicked)="onSchedule($event)"
+                  (beforeCreateSchedule)="onBeforeCreateSchedule($event)">
+</ngx-tui-calendar>
