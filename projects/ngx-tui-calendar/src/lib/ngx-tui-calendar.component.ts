@@ -3,6 +3,7 @@ import { Component, ElementRef, Input, Output, EventEmitter, AfterViewInit, OnCh
 import * as Calendar from 'tui-calendar';
 import { TuiCalendarOptions, TuiCalendarDefaults } from './ngx-tui-calendar-defaults.service';
 import { AfterRenderScheduleEvent, BeforeCreateScheduleEvent, BeforeDeleteScheduleEvent, BeforeUpdateScheduleEvent, ClickDaynameEvent, ClickScheduleEvent } from './Models/Events';
+import { Schedule } from './Models/Schedule';
 
 @Component({
   selector: 'ngx-tui-calendar',
@@ -16,6 +17,7 @@ export class NgxTuiCalendarComponent implements OnChanges, TuiCalendarOptions {
   @Input() template: object;
   @Input() month: object;
   @Input() week: object;
+  @Input() schedules: Schedule[];
 
   @Output() beforeCreateSchedule: EventEmitter<BeforeCreateScheduleEvent> = new EventEmitter();
   @Output() beforeDeleteSchedule: EventEmitter<BeforeDeleteScheduleEvent> = new EventEmitter();
@@ -89,7 +91,17 @@ export class NgxTuiCalendarComponent implements OnChanges, TuiCalendarOptions {
   }
 
 
-  ngOnChanges(changes: SimpleChanges): void { }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["schedules"] !== undefined) {
+      this.updateSchedules();
+    }
+  }
+
+  private updateSchedules() {
+    this.tuiCalendar.clear();
+    this.tuiCalendar.createSchedules(this.schedules, true);
+    this.tuiCalendar.render();
+  }
 
   public setTimeZoneOffset(offset: number) {
     this.tuiCalendar.setTimeZoneOffset(offset);
@@ -199,7 +211,7 @@ export class NgxTuiCalendarComponent implements OnChanges, TuiCalendarOptions {
     this.tuiCalendar.toggleSchedules(calendarId, toHide, render);
   }
 
-  public updateSchedule(scheduleId: string, calendarId: string, scheduleData: any, silent: boolean) {
+  public updateSchedule(scheduleId: string, calendarId: string, scheduleData: Schedule, silent: boolean) {
     this.tuiCalendar.updateSchedule(scheduleId, calendarId, scheduleData, silent);
   }
 

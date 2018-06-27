@@ -19,5 +19,7 @@
                   (dayNameClicked)="onDate($event)"
                   (timeClicked)="onTime($event)"
                   (scheduleClicked)="onSchedule($event)"
-                  (beforeCreateSchedule)="onBeforeCreateSchedule($event)">
+                  (beforeCreateSchedule)="onBeforeCreateSchedule($event)"
+                  [schedules]="schedules"
+                  >
 </ngx-tui-calendar>
