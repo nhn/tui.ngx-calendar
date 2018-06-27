@@ -1,18 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { NgxTuiCalendarComponent } from '../../projects/ngx-tui-calendar/src/lib';
 import { ClickDaynameEvent, BeforeCreateScheduleEvent } from '../../projects/ngx-tui-calendar/src/lib/Models/Events';
+import { Schedule } from '../../projects/ngx-tui-calendar/src/lib/Models/Schedule';
 
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  
 	title = 'app';
 
 
 	@ViewChild('calendar') calendar: NgxTuiCalendarComponent;
-
+  schedules: Schedule[];
 
 	calendarViews = [
 		{ value: '0', name: 'month' },
@@ -23,21 +25,23 @@ export class AppComponent {
 	defaultView = 'week';
 
 	constructor() {
-	}
+  }
 
+  ngOnInit(): void {
+    this.schedules = [
+      {
+        id: '1',
+        calendarId: '1',
+        title: 'my schedule',
+        category: 'time',
+        dueDateClass: '',
+        start: (new Date()),
+        end: (new Date())
+      }
+    ]
+  }
 
 	onTuiCalendarCreated($event) {
-		this.calendar.createSchedules([
-			{
-				id: '1',
-				calendarId: '1',
-				title: 'my schedule',
-				category: 'time',
-				dueDateClass: '',
-				start: '2018-05-23T10:30:00+00:00',
-				end: '2018-05-23T12:30:00+00:00'
-			}
-		]);
 	}
 
   onBeforeCreateSchedule(event: BeforeCreateScheduleEvent) {
