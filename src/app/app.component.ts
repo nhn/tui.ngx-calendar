@@ -10,6 +10,7 @@ import { ClickDaynameEvent, BeforeCreateScheduleEvent } from '../../projects/ngx
 export class AppComponent {
 	title = 'app';
 
+
 	@ViewChild('calendar') calendar: NgxTuiCalendarComponent;
 
 
@@ -18,6 +19,8 @@ export class AppComponent {
 		{ value: '1', name: 'week' },
 		{ value: '2', name: 'day' }
 	];
+
+	defaultView = 'week';
 
 	constructor() {
 	}
