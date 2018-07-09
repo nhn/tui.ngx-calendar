@@ -5,7 +5,7 @@ export interface Schedule {
   start: string | Date
   end: string | Date
   isAllDay?: boolean
-  category?: string
+  category: "milestone" | "task" | "allday" | "time";
   dueDateClass?: string
   location?: string
   attendees?: Array<string>
