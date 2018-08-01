@@ -1,17 +1,19 @@
 <input type="date" name="date" id="date" (change)="onDateChange($event)">
 <button (click)="onCalendarPrev()">
-    previous
+  previous
 </button>
 <button (click)="onCalendarNext()">
-    next
+  next
 </button>
 
 <select placeholder="View" value="1" (change)="onChangeCalendarView($event)">
-    <option *ngFor="let view of calendarViews" [value]="view.value">
-      {{ view.name }}
-    </option>
-  </select>
+  <option *ngFor="let view of calendarViews" [value]="view.value">
+    {{ view.name }}
+  </option>
+</select>
 
+<label><input type="checkbox" [(ngModel)]="isReadOnly">readonly</label>
+<label><input type="checkbox" [(ngModel)]="disableDblClick">disableDblClick</label>
 
 <ngx-tui-calendar #calendar
                   (tuiCalendarCreated)="onTuiCalendarCreated($event)"
@@ -21,5 +23,6 @@
                   (scheduleClicked)="onSchedule($event)"
                   (beforeCreateSchedule)="onBeforeCreateSchedule($event)"
                   [schedules]="schedules"
-                  >
+                  [disableDblClick]="disableDblClick"
+                  [isReadOnly]="isReadOnly">
 </ngx-tui-calendar>

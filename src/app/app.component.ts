@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
 
 	@ViewChild('calendar') calendar: NgxTuiCalendarComponent;
   schedules: Schedule[];
-
 	calendarViews = [
 		{ value: '0', name: 'month' },
 		{ value: '1', name: 'week' },

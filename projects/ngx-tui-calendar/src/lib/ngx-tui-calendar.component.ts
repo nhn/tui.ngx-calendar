@@ -11,6 +11,8 @@ import { Schedule } from './Models/Schedule';
 })
 export class NgxTuiCalendarComponent implements OnChanges, TuiCalendarOptions {
 
+
+  // Should match options in TuiCalendarOptions
   @Input() defaultView: string;
   @Input() taskView: boolean;
   @Input() scheduleView: boolean;
@@ -18,7 +20,9 @@ export class NgxTuiCalendarComponent implements OnChanges, TuiCalendarOptions {
   @Input() month: object;
   @Input() week: object;
   @Input() schedules: Schedule[];
-
+  @Input() disableDblClick: boolean;
+  @Input() isReadOnly: boolean;
+  
   @Output() beforeCreateSchedule: EventEmitter<BeforeCreateScheduleEvent> = new EventEmitter();
   @Output() beforeDeleteSchedule: EventEmitter<BeforeDeleteScheduleEvent> = new EventEmitter();
   @Output() afterRenderSchedule: EventEmitter<AfterRenderScheduleEvent> = new EventEmitter();
@@ -92,9 +96,25 @@ export class NgxTuiCalendarComponent implements OnChanges, TuiCalendarOptions {
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes["schedules"] !== undefined) {
-      this.updateSchedules();
+    // whatever the changes are, just merge them into the current options
+    console.log("Got changes");
+    console.dir(changes);
+    // get current options
+    let currentoptions: TuiCalendarOptions = this.getOptions();
+
+    //get currentValue of all changes
+    
+    let changedValues = new Object;
+    for (let a of Object.keys(changes)) {
+      changedValues[a] = changes[a].currentValue;
     }
+
+    // merge them
+    let merged = {
+      ...currentoptions, ...changedValues 
+    }
+    // set them
+    this.setOptions(merged, false);
   }
 
   private updateSchedules() {
@@ -147,8 +167,8 @@ export class NgxTuiCalendarComponent implements OnChanges, TuiCalendarOptions {
     this.tuiCalendar.getElement(scheduleId, calendarId);
   }
 
-  public getOptions() {
-    <TuiCalendarOptions>this.tuiCalendar.getOptions();
+  public getOptions(): TuiCalendarOptions {
+    return <TuiCalendarOptions>this.tuiCalendar.getOptions();
   }
 
   public getSchedule(scheduleId: string, calendarId: string) {
