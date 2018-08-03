@@ -97,8 +97,7 @@ export class NgxTuiCalendarComponent implements OnChanges, TuiCalendarOptions {
 
   ngOnChanges(changes: SimpleChanges): void {
     // whatever the changes are, just merge them into the current options
-    console.log("Got changes");
-    console.dir(changes);
+
     // get current options
     let currentoptions: TuiCalendarOptions = this.getOptions();
 
