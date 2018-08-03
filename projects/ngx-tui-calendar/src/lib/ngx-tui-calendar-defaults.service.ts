@@ -9,7 +9,8 @@ export interface TuiCalendarOptions {
 	template?: Template;
 	month?: MonthOptions;
   week?: WeekOptions;
-  disableDblClick?:boolean
+  disableDblClick?: boolean,
+  isReadOnly? : boolean
 }
 
 export class TuiCalendarDefaults {
@@ -19,6 +20,7 @@ export class TuiCalendarDefaults {
 	useDetailPopup = false;
   scheduleView = true;
   disableDblClick = false;
+  isReadOnly = false;
 
   week: WeekOptions = {
 		daynames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
