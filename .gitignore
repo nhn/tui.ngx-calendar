@@ -44,3 +44,4 @@ testem.log
 .DS_Store
 Thumbs.db
 /.vs
+/projects/ngx-tui-calendar/node_modules
